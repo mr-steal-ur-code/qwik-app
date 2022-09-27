@@ -12,6 +12,7 @@
     "build.server": "vite build --ssr src/entry.express.tsx",
     "build.ssg": "vite build --ssr src/entry.static.tsx",
     "build.types": "tsc --incremental --noEmit",
+    "ssg": "node server/entry.static",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",

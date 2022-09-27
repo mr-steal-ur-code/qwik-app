@@ -1,3 +1,4 @@
+import { initializeApp } from "firebase/app";
 /*
  * WHAT IS THIS FILE?
  *
@@ -9,9 +10,20 @@
  * - More code is transferred to the browser than in SSR mode.
  * - Optimizer/Serialization/Deserialization code is not exercised!
  */
-import { render, RenderOptions } from '@builder.io/qwik';
-import Root from './root';
+import { render, RenderOptions } from "@builder.io/qwik";
+import Root from "./root";
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCPVwMpZsk9nVEh3D11XadG7p1bwZiZuLY",
+  authDomain: "qwik-playground.firebaseapp.com",
+  projectId: "qwik-playground",
+  storageBucket: "qwik-playground.appspot.com",
+  messagingSenderId: "1014709475683",
+  appId: "1:1014709475683:web:aa1e877d5c46cf94c4db56",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 export default function (opts: RenderOptions) {
   return render(document, <Root />, opts);
 }

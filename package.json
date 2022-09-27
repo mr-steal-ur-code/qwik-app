@@ -6,8 +6,9 @@
   },
   "private": true,
   "scripts": {
-    "build": "qwik build",
+    "build": "qwik build && npm run build.ssr",
     "build.client": "vite build",
+    "build.ssg": "vite build --ssr src/entry.static.tsx",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.types": "tsc --incremental --noEmit",
     "dev": "vite --mode ssr",

@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useOnWindow, $ } from "@builder.io/qwik";
 import {
   QwikCity,
   RouterOutlet,
@@ -6,7 +6,9 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 import "./global.css";
+import config from "./config";
 
 export default component$(() => {
   /**
@@ -15,22 +17,34 @@ export default component$(() => {
    *
    * Dont remove the `<head>` and `<body>` elements.
    */
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCPVwMpZsk9nVEh3D11XadG7p1bwZiZuLY",
-    authDomain: "qwik-playground.firebaseapp.com",
-    projectId: "qwik-playground",
-    storageBucket: "qwik-playground.appspot.com",
-    messagingSenderId: "1014709475683",
-    appId: "1:1014709475683:web:aa1e877d5c46cf94c4db56",
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  useOnWindow(
+    "load",
+    $((event) => {
+      // Initialize Firebase
+      const app = initializeApp(config.firebase);
+      const db = getFirestore(app);
+      document.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log(event);
+      });
+    })
+  );
 
   return (
     <QwikCity>
       <head>
+        <script
+          type="module"
+          src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+        ></script>
+        <script
+          noModule
+          src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+        />
         <meta charSet="utf-8" />
         <RouterHead />
       </head>

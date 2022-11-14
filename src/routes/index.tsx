@@ -8,7 +8,16 @@ export default component$(() => {
       <Link class="mindblow" href="/flower">
         Blow my mind 🤯
       </Link>
-      <Link href="/boom">My boom page</Link>
+      <span style={{ display: "block" }}>
+        <Link style={{ "text-decoration": "none" }} href="/boom">
+          My boom page
+        </Link>
+      </span>
+      <span style={{ display: "block" }}>
+        <Link style={{ "text-decoration": "none" }} href="/user">
+          My user page
+        </Link>
+      </span>
     </div>
   );
 });

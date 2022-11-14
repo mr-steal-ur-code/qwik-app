@@ -17,7 +17,7 @@
     "fmt.check": "prettier --check .",
     "preview": "qwik build preview && vite preview --open",
     "serve": "node server/entry.express",
-    "ssg": "node server/entry.static",
+    "ssg": "node server/entry.ssr.js",
     "start": "vite --open --mode ssr",
     "qwik": "qwik"
   },
